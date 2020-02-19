@@ -66,7 +66,7 @@ public class VentanaAgregarMprima extends JFrame {
 			
 			jLabel4 = new JLabel();
 			jLabel4.setText("Id:");
-			jLabel4.setBounds(new Rectangle(20, 145, 60, 15));
+			jLabel4.setBounds(new Rectangle(20, 120, 60, 15));
 			
 			jLabel5 = new JLabel();
 			jLabel5.setText("Precio:");
@@ -142,7 +142,7 @@ public class VentanaAgregarMprima extends JFrame {
 	private JTextField getJTextFieldId() {
 		if (jTextFieldId == null) {
 			jTextFieldId = new JTextField();
-			jTextFieldId.setBounds(new Rectangle(120, 145, 138, 20));
+			jTextFieldId.setBounds(new Rectangle(120, 120, 138, 20));
 		}
 		return jTextFieldId;
 	}
