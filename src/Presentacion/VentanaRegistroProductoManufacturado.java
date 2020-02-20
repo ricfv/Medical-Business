@@ -25,7 +25,7 @@ public class VentanaRegistroProductoManufacturado extends JFrame {
 
 	private JButton jButtonEliminarProducto = null;
 	
-	ArrayList <Producto_Manufacturado> productos=null;
+	ArrayList <Producto_Manufacturado> productos= new ArrayList<Producto_Manufacturado>();
 	Producto_Manufacturado product=null;
 
 
@@ -41,11 +41,10 @@ public class VentanaRegistroProductoManufacturado extends JFrame {
 	 */
 	public VentanaRegistroProductoManufacturado(ControlRegistroPmanufacturado control,ArrayList <Producto_Manufacturado> productos) {
 		super();
+		this.control = control;
+		this.productos = productos;
 		initialize();
 		setLocationRelativeTo(null);
-		this.control = control;
-		this.productos = new ArrayList<Producto_Manufacturado>(); 
-		this.productos = productos;
 	}
 
 	/**
@@ -128,7 +127,13 @@ public class VentanaRegistroProductoManufacturado extends JFrame {
 		jTextArea = new JTextArea();
 
 		jTextArea.setEditable(true);		
-		jTextArea.setBounds(new Rectangle(50,50,370,320));	
+		jTextArea.setBounds(new Rectangle(50,50,370,320));
+		Iterator<Producto_Manufacturado> it = productos.iterator();
+		while(it.hasNext()){
+		    Producto_Manufacturado producto = it.next();
+		    jTextArea.setText("Nonmbre: " + producto.getNombre() + " , Costo: " + producto.getCosto()+ ", tipo: " + 
+		    producto.getTipo()+"\nDescripción: "+ producto.getDescripcion());
+		}
 			return jTextArea;	
 	}
 

@@ -1,6 +1,7 @@
 package Presentacion;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import Dominio.Producto_Manufacturado;
 import Negocio.ServicioProductoManufacturado;
@@ -71,7 +72,9 @@ public class ControlRegistroPmanufacturado {
 
 	public void eliminaProducto(Integer id) {
 		if(servicio.eliminaRegistro(id))
-			ventana.muestraMensaje("Producto eliminado");
+			ventana.muestraMensaje("Producto eliminado.");
+		else
+			ventana.muestraMensaje("El identificador que ingresó no existe.");
 	}
 
 }
