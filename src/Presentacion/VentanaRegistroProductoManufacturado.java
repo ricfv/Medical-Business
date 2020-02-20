@@ -2,10 +2,15 @@ package Presentacion;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
+
+import Dominio.Producto_Manufacturado;
+
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 import java.awt.Rectangle;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 import Presentacion.ControlRegistroPmanufacturado;
 
@@ -20,6 +25,11 @@ public class VentanaRegistroProductoManufacturado extends JFrame {
 
 	private JButton jButtonEliminarProducto = null;
 	
+	ArrayList <Producto_Manufacturado> productos=null;
+	Producto_Manufacturado product=null;
+
+
+	
 	private JTextArea jTextArea = null;
 	private JLabel etiqueta = null;
 
@@ -29,11 +39,13 @@ public class VentanaRegistroProductoManufacturado extends JFrame {
 	/**
 	 * This is the default constructor
 	 */
-	public VentanaRegistroProductoManufacturado(ControlRegistroPmanufacturado control) {
+	public VentanaRegistroProductoManufacturado(ControlRegistroPmanufacturado control,ArrayList <Producto_Manufacturado> productos) {
 		super();
 		initialize();
 		setLocationRelativeTo(null);
 		this.control = control;
+		this.productos = new ArrayList<Producto_Manufacturado>(); 
+		this.productos = productos;
 	}
 
 	/**
@@ -54,7 +66,6 @@ public class VentanaRegistroProductoManufacturado extends JFrame {
 	 */
 	private JPanel getJContentPane() {
 		if (jContentPane == null) {
-			jTextArea = new JTextArea();
 
 			
 			jContentPane = new JPanel();
@@ -114,10 +125,11 @@ public class VentanaRegistroProductoManufacturado extends JFrame {
 	}
 	
 	private JTextArea getJTextArea() {
-		
-		jTextArea.setEditable(false);		
-		jTextArea.setBounds(new Rectangle(50,50,370,320));
-		return jTextArea;	
+		jTextArea = new JTextArea();
+
+		jTextArea.setEditable(true);		
+		jTextArea.setBounds(new Rectangle(50,50,370,320));	
+			return jTextArea;	
 	}
 
 	public void abre() {

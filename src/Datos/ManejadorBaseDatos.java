@@ -3,6 +3,7 @@ package Datos;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
@@ -19,6 +20,10 @@ public class ManejadorBaseDatos {
 	private static ManejadorBaseDatos manejador = null;
 	// La conexion
 	private Connection conn = null;
+	
+	static {
+		PropertyConfigurator.configure("res/log4j_config.properties");
+	}
 	
 	private static final String driver ="com.mysql.jdbc.Driver"; 
 	private static final String user="root";
@@ -39,9 +44,11 @@ public class ManejadorBaseDatos {
 	           en un entorno embebido esto inicia a Derby ya que no esta ejecutandose
 	         */	
 			Class.forName(driver);
+			
+
 			conn = DriverManager.getConnection(url, user, password);
 			if(conn!=null)
-				System.out.println("si conectamos");	       
+				System.out.println("Acceso a la base de datos exitoso!");	       
 	        // AutoCommit = true para que los cambios se repercutan inmediatamente.
 	        conn.setAutoCommit(true);
 		}

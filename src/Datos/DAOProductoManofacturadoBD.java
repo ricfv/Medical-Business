@@ -120,9 +120,10 @@ public class DAOProductoManofacturadoBD implements DAOProductoManofacturado{
 				Producto_Manufacturado product = new Producto_Manufacturado();
 				product.setId(Integer.parseInt(rs.getString("Id")));
 				product.setNombre(rs.getString("Nombre"));
-
-				productos.add(product);
-			}
+				product.setNombre(rs.getString("Tipo"));
+				product.setNombre(rs.getString("Descripcion"));
+				product.setCosto(Double.parseDouble(rs.getString("Costo")));
+				productos.add(product);			}
 			
 		}catch(SQLException e){
 			e.printStackTrace();
@@ -148,7 +149,7 @@ try{
 			Statement statement = ManejadorBaseDatos.getConnection().createStatement();
 
 			// Recibe los resutados
-			statement.execute("DELETE FROM Producto_Manufacturado WHERE Id = '"+id+"'");
+			statement.execute("DELETE FROM ProductoManufacturado WHERE Id = '"+id+"'");
 
 			
 			return true;

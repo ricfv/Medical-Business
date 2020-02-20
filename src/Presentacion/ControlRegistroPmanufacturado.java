@@ -22,7 +22,7 @@ public class ControlRegistroPmanufacturado {
 	public void inicia() {
 		//aqui inicia la HU-32 el sistema muestra la ventana RegistroProductoManufactura
 		productos = servicio.obtenerInformacionProductos();
-		ventana = new VentanaRegistroProductoManufacturado(this);
+		ventana = new VentanaRegistroProductoManufacturado(this,productos);
 		ventana.setVisible(true);
 		
 	}
@@ -55,11 +55,11 @@ public class ControlRegistroPmanufacturado {
 					// 4.- El sistema valida y muestra un mensaje de exito
 					if(servicio.generaRegistro(id, descripcion, nombre, tipo, precio)) {
 			        
-						ventana.muestraMensaje("Se agrego libro exitosamente");
+						ventana.muestraMensaje("Se agrego el  producto exitosamente");
 					} else {
 						
 						// Flujo alternativo en 3, si no se puede agregar, muestra un mensaje de error
-						ventana.muestraMensaje( "Un libro con ese nombre ya existe o o se pudo agregar");
+						ventana.muestraMensaje( "Un producto con ese nombre ya existe o o se pudo agregar");
 			
 					}
 					
@@ -70,7 +70,8 @@ public class ControlRegistroPmanufacturado {
 	}
 
 	public void eliminaProducto(Integer id) {
-		
+		if(servicio.eliminaRegistro(id))
+			ventana.muestraMensaje("Producto eliminado");
 	}
 
 }
